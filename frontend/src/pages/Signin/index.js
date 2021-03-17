@@ -15,19 +15,25 @@ export default function Signin(){
 
     async function handleRegister(e) {
         e.preventDefault();
+        
 
         const data = {
             name,
             email,
             password
         };
+
+        console.log(data);
+        
         try{
         const response = await api.post('usersignin', data);
 
         history.push('/');
 
+        console.log(response)
+
         alert('Cadastrado com sucesso')
-        } catch(err){
+        }catch(err){
             alert('Erro no cadastro')
         }
     }
@@ -54,7 +60,7 @@ export default function Signin(){
                      <button type="submit">Cadastrar</button>
                  </form>
 
-                 <Link to="/">
+                 <Link to='/'>
                         Voltar para a página de Login
                 </Link>   
             </section>

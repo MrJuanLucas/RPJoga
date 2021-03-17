@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 
 import './styles.css';
 
@@ -8,20 +8,30 @@ import api from '../../services/api'
 export default function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory();
 
     async function handleLogin(e){
         e.preventDefault();
 
+        console.log(email, password)
+
         const data = {
             email,
             password
-        }
+        };
+
+        console.log(data)
+       
 
         try{
-            const response = await api.post('session', {data})
+            const response = await api.post('session', {data});
+            console.log(response);
 
-           console.log(response.data.check.name)
-        }catch(err){
+            
+            history.push('/home');
+
+           
+        } catch(err){
             alert("Usuário não encontrado")
         }
     }

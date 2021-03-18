@@ -8,6 +8,8 @@ module.exports = {
         .where('email',email)
         .where('password', password)
         .select('user_id').first()
+        .select('name')
+        .select('email')
         ;
        
        if(!user){

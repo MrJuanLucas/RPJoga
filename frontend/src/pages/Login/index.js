@@ -19,13 +19,14 @@ export default function Login(){
             email,
             password
         };
-
-        console.log(data)
        
+           try{
+            const response = await api.post('session', data);
+            
 
-        try{
-            const response = await api.post('session', {data});
-            console.log(response);
+            localStorage.setItem('user_id', response.data.user.user_id);
+            localStorage.setItem('user_name', response.data.user.name);
+            localStorage.setItem('user_email', response.data.user.email);
 
             
             history.push('/home');

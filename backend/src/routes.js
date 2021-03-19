@@ -10,7 +10,9 @@ const routes = express.Router();
 routes.post('/usersignin', UserController.create);
 
 routes.post('/board', TableController.create);
-routes.get('/board_index_user', TableController.index_user);
+routes.get('/board_index', TableController.index);
+routes.get('/board_user', TableController.index_user);
+
 
 routes.post('/session', SessionController.create);
 

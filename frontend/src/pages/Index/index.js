@@ -8,6 +8,7 @@ import api from '../../services/api';
 export default function Index(){
 
     const [boards, setBoards] = useState([]);
+    const [board_id, setBoard_id] = useState('');
 
     const user_name = localStorage.getItem('user_name');
 
@@ -16,6 +17,10 @@ export default function Index(){
             setBoards(response.data);
         })
     }, [])
+
+    function handleRegistrateTable(){
+        localStorage.setItem('board_id', 3);
+    }
 
     return(
         <div>
@@ -39,13 +44,12 @@ export default function Index(){
                 <p>{board.status}</p>
     
             <Link to="/table">
-                <button type="button">
+                <button onClick={handleRegistrateTable} type="button">
                     <span>Entrar na mesa</span>
                 </button>
             </Link>
                 </li>
             ))
-
             }
         </ul>
 

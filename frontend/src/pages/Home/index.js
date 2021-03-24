@@ -8,9 +8,11 @@ import api from '../../services/api';
 export default function Home(){
 
     const [boards, setBoards] = useState([]);
+    const [board_id, setBoard_id] = useState('');
 
     const user_name = localStorage.getItem('user_name');
     const user_id = localStorage.getItem('user_id');
+    localStorage.setItem('board_id', board_id)
 
     const history = useHistory();
 
@@ -24,11 +26,21 @@ export default function Home(){
         })
     }, [])
 
+    
+    function handleRegistrateTable(){
+        localStorage.setItem('board_id', 3);
+    }
+
+
     function handleLogout(){
         localStorage.clear();
 
-        history.push('/')
+        history.push('/');
     }
+
+
+
+    
 
     return(
         <div>
@@ -44,6 +56,7 @@ export default function Home(){
         <ul>
         {boards.map(board => (
                 <li key={board.board_id}>
+                    {board.board_id}
                 Nome: 
                 <p>{board.name}</p>
                 Sistema:
@@ -52,10 +65,10 @@ export default function Home(){
                 <p>{board.status}</p>
     
             <Link to="/table">
-                <button type="button">
+                <button onClick= {handleRegistrateTable()} type="button">
                     <span>Entrar na mesa</span>
                 </button>
-            </Link>
+            </Link> 
                 </li>
             ))
 

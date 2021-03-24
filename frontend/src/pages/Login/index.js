@@ -10,19 +10,25 @@ export default function Login(){
     const [password, setPassword] = useState('');
     const history = useHistory();
 
+    const user_id = localStorage.getItem('user_id');
+
     async function handleLogin(e){
         e.preventDefault();
 
-        console.log(email, password)
 
         const data = {
             email,
             password
         };
+
        
            try{
-            const response = await api.post('session', data);
-            
+            const response = await api.post('session', data);  
+
+            if(response.data.user.user_id == user_id){
+                alert("Usuário já logado");
+                
+            }else{
 
             localStorage.setItem('user_id', response.data.user.user_id);
             localStorage.setItem('user_name', response.data.user.name);
@@ -30,7 +36,7 @@ export default function Login(){
 
             
             history.push('/home');
-
+            }
            
         } catch(err){
             alert("Usuário não encontrado")
@@ -57,7 +63,7 @@ export default function Login(){
                  </form>
                  <Link to="/signin">
                         Cadastre-se
-                    </Link>  
+                </Link>  
             </section>
         </div>
     )

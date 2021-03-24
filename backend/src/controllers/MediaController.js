@@ -1,14 +1,24 @@
 const connection = require('../database/connection');
 module.exports = {
-    async create(request, response){
+    async index(request, response){
+        const medias = await connection('media').select('*');
+
+        return response.json(medias);
+    },
+    async index_user(request,response){
+        const medias = await connection('media').select('*');
+
+        return response.json(medias);
+    }
+    ,async create(request, response){
         
-        const {name, tag, media} = request.body;
+        const {media_name, tag, media} = request.body;
 
         const user_id = request.headers.authorization;
         const board_id = request.headers.board_id;
          
         await connection('media').insert({
-            name,
+            media_name,
             tag,
             media,
             user_id,

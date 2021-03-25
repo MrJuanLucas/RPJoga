@@ -1,0 +1,33 @@
+.Signin-container section{
+    width: 100%;
+    max-width: 550px;
+    height: 100vh;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+.Signin-container img{
+    max-width: 425px;
+    width: auto;
+    height: auto;
+    margin-left: 50px;
+}
+
+body, html {
+    height: 100%;
+  }
+
+.Idf2{
+    background-image: url("../../assets/Cadastro.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Signin-container section h1{
+    font-size: 35px;
+    margin-bottom: 15px;
+    color: #e02041;
+
+}

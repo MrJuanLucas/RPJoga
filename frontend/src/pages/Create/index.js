@@ -41,8 +41,9 @@ export default function Create(){
     }
 
     return(
-        <div>
-            <section className="Form">
+        <div className="Idf">
+        <div className="login-container">
+            <section className="form">
                 <form onSumit ={handleSubmit}> 
                     <h1> Crie sua mesa </h1>
 
@@ -60,10 +61,11 @@ export default function Create(){
                      />
 
                     <Link to="/table">
-                        <button onClick={handleSubmit} type="submit">Criar mesa</button>
+                        <button className="button" onClick={handleSubmit} type="submit">Criar mesa</button>
                     </Link>
                  </form>   
             </section>
         </div>
+    </div>
     )
 }

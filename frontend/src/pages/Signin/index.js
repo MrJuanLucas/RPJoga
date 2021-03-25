@@ -1,5 +1,6 @@
 import React , { useState }from 'react';
 import {Link, useHistory} from 'react-router-dom';
+import IWUA from '../../assets/IWUA.png'
  
 import api from '../../services/api';
 
@@ -39,8 +40,10 @@ export default function Signin(){
     }
 
     return(
-        <div>
+    <div className="Idf2">
+        <div className="Signin-container">
             <section className="Form">
+                <img src={IWUA} alt="I Want you for an Adventure"/>
                 <form onSubmit={handleRegister}>
                     <h1> Faça seu cadastro </h1>
                     
@@ -57,7 +60,7 @@ export default function Signin(){
                       value={password}
                       onChange={e => setPassword(e.target.value)}
                      />
-                     <button type="submit">Cadastrar</button>
+                     <button className="button" type="submit">Cadastrar</button>
                  </form>
 
                  <Link to='/'>
@@ -65,5 +68,6 @@ export default function Signin(){
                 </Link>   
             </section>
         </div>
+    </div>
     )
 }

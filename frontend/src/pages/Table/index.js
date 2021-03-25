@@ -1,5 +1,7 @@
 import React ,{useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
+import {GiD4, GiPerspectiveDiceFive, GiDiceEightFacesEight, GiD10, GiD12, GiDiceTwentyFacesTwenty} from 'react-icons/gi';
+import {FiPower} from 'react-icons/fi';
 
 import api from '../../services/api'
 import './styles.css';
@@ -97,14 +99,16 @@ export default function Table(){
     }
 
     return(
+        <div className="Idf3">
+        <div className="home-container">
         <div>
-            <button onClick={handleGetOutTable}>
-                Sair
+            <button className="button" onClick={handleGetOutTable}>
+               <FiPower size={13} color="#fff"/>
             </button>
-        <div>
+        <div >
            <section className="Form">
                 <form > 
-                    <h1> Envie um card</h1>
+                    <h1 color="#fff"> Envie um card</h1>
 
                      <input placeholder="Nome do card"
                      value={card_name}
@@ -123,19 +127,19 @@ export default function Table(){
                      />
 
                     
-                    <button  onClick={handleCard} type="submit">Enviar cartão</button>
+                    <button  className="button" onClick={handleCard} type="submit">Enviar cartão</button>
                  </form>   
             </section>
             <div>
-                Role dados!<br/>
-            <button  onClick={rolld4} type="submit">d4</button>
-            <button  onClick={rolld6} type="submit">d6</button>
-            <button  onClick={rolld8} type="submit">d8</button>
-            <button  onClick={rolld10} type="submit">d10</button>
-            <button  onClick={rolld12} type="submit">d12</button>
-            <button  onClick={rolld20} type="submit">d20</button>
-            <button  onClick={rolld100} type="submit">d100</button>
-            <p>Resultado: {diceRoll}</p>
+                <h3>Role dados!</h3>
+            <button  className="button" onClick={rolld4} type="submit"><GiD4 size={18} color="#fff"/></button>
+            <button  className="button" onClick={rolld6} type="submit"><GiPerspectiveDiceFive size={18} color="#fff"/></button>
+            <button  className="button" onClick={rolld8} type="submit">< GiDiceEightFacesEight size={18} color="#fff"/></button>
+            <button  className="button" onClick={rolld10} type="submit">< GiD10 size={18} color="#fff"/></button>
+            <button  className="button" onClick={rolld12} type="submit">< GiD12 size={18} color="#fff"/></button>
+            <button  className="button" onClick={rolld20} type="submit">< GiDiceTwentyFacesTwenty size={18} color="#fff"/></button>
+            <button  className="button" onClick={rolld100} type="submit">< GiD10 size={18} color="#fff"/>< GiD10 size={18} color="#fff"/></button>
+            <h3 color="#fff">Resultado: {diceRoll}</h3>
 
             </div>
             </div>
@@ -143,12 +147,12 @@ export default function Table(){
             <ul>
             {cards.map(card => (
                 <li key={card.card_id}>
-                Nome: 
+                <strong>Nome:</strong> 
                 <p>{card.card_name}</p>
-                Tag:
+                <strong>Tag:</strong>
                 <p>{card.card_tag}</p>
                 <p>{card.card_text}</p>
-                Criado por:
+                <strong>Criado por:</strong>
                 <p>{card.name}</p>
                 </li>
             ))
@@ -156,7 +160,8 @@ export default function Table(){
             }
             </ul>
         
-
+        </div>
          </div>   
+    </div>
     )
 }

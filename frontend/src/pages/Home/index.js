@@ -1,9 +1,18 @@
 import React ,{useState, useEffect}from 'react';
 import {Link, useHistory } from 'react-router-dom';
+import {FaDiceD20} from 'react-icons/fa';
+import {FiPower} from 'react-icons/fi';
 
 import './styles.css';
 
+import logo from '../../assets/Logo.png'
+
 import api from '../../services/api';
+import Ex1 from '../../assets/Ex1.jpg';
+import Ex2 from '../../assets/Ex2.jpg';
+import Ex3 from '../../assets/Ex3.png';
+import Ex4 from '../../assets/Ex4.jpg';
+
 
 export default function Home(){
 
@@ -27,8 +36,8 @@ export default function Home(){
     }, [])
 
     
-    function handleRegistrateTable(){
-        localStorage.setItem('board_id', 3);
+    async function handleRegistrateTable(board_id){
+       await localStorage.setItem('board_id', board_id);
     }
 
 
@@ -39,42 +48,44 @@ export default function Home(){
     }
 
 
-
-    
-
     return(
-        <div>
+        <div className="Idf3">
+        <div className="home-container">
+            <div className="bottons1">
             <header>
+                <img src={logo}/>
+                <br/>
                 <span>Bem vindo {user_name}</span>
                 <Link className="button" to="create">Crie uma nova mesa</Link>
                 <Link className="button" to="index">Encontre novas mesas</Link>
-                <button type="button" onClick={handleLogout}>Sair</button>
+                <button className="button" type="button" onClick={handleLogout}><FiPower size={18} color="#fff"/></button>
             </header>
+            </div>
 
         <h1>Suas mesas</h1>
 
         <ul>
         {boards.map(board => (
                 <li key={board.board_id}>
-                    {board.board_id}
-                Nome: 
+                <strong>Nome:</strong>
                 <p>{board.name}</p>
-                Sistema:
+                <strong>Sistema:</strong>
                 <p>{board.system}</p>
-                Status:
+                <strong>Status:</strong>
                 <p>{board.status}</p>
-    
-            <Link to="/table">
-                <button onClick= {handleRegistrateTable()} type="button">
-                    <span>Entrar na mesa</span>
+                <Link to="/table">
+                <button className="button" onClick= {handleRegistrateTable(board.board_id)} type="button">
+                    <FaDiceD20 size={18} color="#fff"/>
                 </button>
-            </Link> 
+                </Link> 
                 </li>
+                 
             ))
 
             }
         </ul>
 
          </div> 
+    </div>
     )
 }
